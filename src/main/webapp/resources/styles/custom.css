@@ -4,7 +4,7 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* CUSTOMIZA PAINEL LOGIN */
+/* CUSTOMIZA PAINEL LOGIN */ /* ednelson rodrigues */
 .img {
 	background-image: url("#{resource['/images/direito.png']}");
 	width: 100%;
