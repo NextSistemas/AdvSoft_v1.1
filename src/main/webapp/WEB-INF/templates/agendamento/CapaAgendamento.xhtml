@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+	
+	<script>
+		PrimeFaces.locales['pt'] = {
+			closeText : 'Fechar',
+			prevText : 'Anterior',
+			nextText : 'Próximo',
+			currentText : 'Começo',
+			monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio',
+					'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+					'Novembro', 'Dezembro' ],
+			monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+					'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+			dayNames : [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta',
+					'Sexta', 'Sábado' ],
+			dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+			dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+			weekHeader : 'Semana',
+			firstDay : 0,
+			isRTL : false,
+			showMonthAfterYear : false,
+			yearSuffix : '',
+			timeOnlyTitle : 'Só Horas',
+			timeText : 'Tempo',
+			hourText : 'Hora',
+			minuteText : 'Minuto',
+			secondText : 'Segundo',
+			ampm : false,
+			month : 'Mês',
+			week : 'Semana',
+			day : 'Dia',
+			allDayText : 'Todo o Dia'
+		};
+	</script>
+	
+	<div class="ui-fluid">
+		<p:panelGrid columns="4" layout="grid" styleClass="panelgrid-semborda" style="margin-top: 15px"
+			columnClasses="ui-grid-col-2, ui-grid-col-4,ui-grid-col-2, ui-grid-col-4">
+
+			<p:outputLabel value="Descrição" for="desc" />
+			<p:inputText id="desc" size="30" maxlength="100" required="true"
+				requiredMessage="A descrição é obrigatória!"
+				value="#{cadastroAgendamentoBean.agendamento.descricao}" />
+
+			<p:outputLabel value="Data" for="data" />
+			<p:calendar id="data" required="true" locale="pt" requiredMessage="A data é obrigatória!"
+				pattern="dd/MM/yyyy HH:mm" stepMinute="5" 
+				value="#{cadastroAgendamentoBean.agendamento.dataAgendamento}" />
+
+			<p:outputLabel value="Advogado" for="pessoa" />
+			<p:selectOneMenu id="pessoa" required="true" requiredMessage="Um(a) Advogado(a) deve ser vinculado!"
+				value="#{cadastroAgendamentoBean.agendamento.pessoa}">
+				<f:selectItem itemLabel="Selecione o Advogado(a)" />
+				<f:selectItems value="#{cadastroAgendamentoBean.pessoas}" var="pessoa"
+					itemLabel="#{pessoa.nome}" itemValue="#{pessoa}" />
+			</p:selectOneMenu>
+		</p:panelGrid>
+	</div>
+</ui:composition>

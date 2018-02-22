@@ -1,0 +1,55 @@
+body {
+	margin: 0px;
+	font-size: 13px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* CUSTOMIZA PAINEL LOGIN */
+.grid-login {
+	background-color: #cdcdcd;
+	border-radius: 8px;
+	border: 1px solid #d7d7d7;
+	margin-top: -1px;
+	padding: 10px;
+}
+
+/* TABVIEW */
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a {
+	color: #555;	
+}
+
+@media (max-width: 640px) {
+	.ui-tabs.ui-tabs-top > .ui-tabs-nav li {
+		width: 100%;
+	}
+}
+
+/* PANELGRID */
+.ui-panelgrid.panelgrid-semborda .ui-grid-responsive {
+	border: none;
+}
+
+@media (max-width: 640px) {
+	.ui-panelgrid.panelgrid-semborda .ui-grid-responsive .ui-grid-row {
+		border: none;
+	}
+}
+
+/* CUSTOMIZA COLUNA */
+.col-custom {
+	width: 17%;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

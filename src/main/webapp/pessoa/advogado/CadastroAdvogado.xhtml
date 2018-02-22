@@ -1,0 +1,26 @@
+<ui:composition template="/WEB-INF/templates/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<ui:define name="titulo">Cadastro | Advogado </ui:define>
+
+	<ui:define name="conteudo">
+		<f:metadata>
+			<o:viewParam name="pessoa" value="#{cadastroAdvogadoBean.pessoa}" />
+		</f:metadata>
+
+		<h1 class="adv-titulo-pagina">Cadastro de Advogado</h1>
+
+		<h:form id="frmCadastro">
+			<p:messages id="messages" autoUpdate="true" closable="true" />
+
+			<ui:include src="/WEB-INF/templates/advogado/BotoesAdvogado.xhtml" />
+
+			<ui:include src="/WEB-INF/templates/advogado/CapaAdvogado.xhtml" />
+
+		</h:form>
+	</ui:define>
+</ui:composition>

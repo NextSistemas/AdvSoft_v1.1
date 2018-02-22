@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+	
+	<div class="ui-fluid">
+		<p:panelGrid columns="4" layout="grid" styleClass="panelgrid-semborda" style="margin-top: 15px"
+			columnClasses="ui-grid-col-2, ui-grid-col-4,ui-grid-col-2, ui-grid-col-4">
+
+			<p:outputLabel value="Nome" for="nome" />
+			<p:inputText id="nome" size="50" maxlength="10" required="true"
+				requiredMessage="O Nome é obrigatório!"
+				value="#{cadastroUsuarioBean.usuario.nome}" />
+
+			<p:outputLabel value="E-mail" for="email" />
+			<p:inputText id="email" size="50" maxlength="60" required="true"
+				requiredMessage="O E-mail é obrigatório!"
+				value="#{cadastroUsuarioBean.usuario.email}" />
+
+			<p:outputLabel value="Senha" for="senha" />
+			<p:password id="senha" size="20" maxlength="15" redisplay="true"
+				required="true" requiredMessage="A senha é obrigatória!"
+				match="repSenha" validatorMessage="As senhas não conferem!"
+				label="SENHA" value="#{cadastroUsuarioBean.usuario.senha}" />
+
+			<p:outputLabel value="Repetir senha" for="repSenha" />
+			<p:password id="repSenha" size="20" maxlength="15" redisplay="true"
+				required="true" label="REPETIR SENHA"
+				value="#{cadastroUsuarioBean.usuario.senha}" />
+
+			<p:outputLabel value="Grupos:" for="grupos" />
+			<p:selectManyCheckbox id="grupos" styleClass="many-checkbox"
+				value="#{cadastroUsuarioBean.usuario.grupos}"
+				converter="grupoConverter" required="true"
+				requiredMessage="Pelo menos UM grupo deve ser informado!">
+				<f:selectItems value="#{cadastroUsuarioBean.grupos}" var="grupo"
+					itemLabel="#{grupo.nome}" itemValue="#{grupo}" />
+			</p:selectManyCheckbox>
+
+		</p:panelGrid>
+	</div>
+</ui:composition>

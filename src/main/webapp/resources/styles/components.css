@@ -1,0 +1,115 @@
+/* TOGGLE */
+.adv-alternar {
+	float: right;
+	line-height: 50px;
+	margin-right: 15px;
+	display: block;
+	margin-left: 20px;
+	
+	color: #fff;
+}
+/* ------------------ MENU --------------------------------*/
+a {
+	text-decoration: none;
+	text-align: none;
+	color: #fff;
+}
+
+.barra-menu {
+	width: 210px;
+	line-height: 18px;
+	margin: 0px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.barra-menu .menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.barra-menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.barra-menu .menu li a {
+	color: #494949;
+	display: block;
+	padding: 9px 10px;
+	font-weight: 500;
+	font-size: 1.1em;
+}
+
+.barra-menu .menu li a:hover, .barra-menu .menu a:focus {
+	background: #1a95d5;
+	color: #fff;
+	transition: all .2s linear;
+	border-left: 2px solid #494949;
+}
+
+.barra-menu .menu .icon-esquerda {
+	font-size: 15px;
+	line-height: 18px;
+	float: left;
+	margin-right: 10px;
+}
+
+.barra-menu .menu .icon-esq-sub {
+	font-size: 2px;
+	line-height: 18px;
+	float: left;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.barra-menu .menu .icon-direita {
+	font-size: 10px;
+	line-height: 18px;
+	float: right;
+	margin-left: 10px;
+}
+
+.barra-menu .menu ul {
+	display: none;
+}
+
+.barra-menu .menu ul li a {
+	background: #9b9b9b;
+	color: #e9e9e9;
+}
+
+.barra-menu .menu .ativo > a {
+	background: #136f9f;
+	color: #fff;
+}
+
+/* TITULO DA PAGINA */
+.adv-titulo-pagina {
+	margin-left: -15px;
+	margin-bottom: 0;
+	padding: 15px; 0;
+	font-size: 1.5em;
+	color: #373737;
+}
+
+.adv-usuario-logado {
+	float: right;
+	line-height: 50px;
+	margin-right: 15px;
+	
+	color: #fff;
+}
+
+.logout {
+	float: right;
+	line-height: 50px;
+	font-size: 17px;
+	
+	color: #fff;
+}
+
+.logout:hover  {
+	color: #b70926;
+}
