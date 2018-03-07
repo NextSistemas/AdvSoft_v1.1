@@ -61,6 +61,26 @@
 	}
 }
 
+@media ( max-width : 600px) {
+	.logo-pc {
+		display: none;
+	}
+	
+	.logo-cel {
+		display: block;
+	}
+}
+
+@media ( min-width : 600px) {
+	.logo-pc {
+		display: block;
+	}
+	
+	.logo-cel {
+		display: none;
+	}
+}
+
 /* LOGIN */
 #login-dialog {
 	margin: 0;
