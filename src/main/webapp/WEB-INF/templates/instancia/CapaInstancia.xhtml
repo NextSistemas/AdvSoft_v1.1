@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<div class="ui-fluid">
+		<p:panelGrid columns="4" layout="grid" styleClass="panelgrid-semborda"
+			style="margin-top: 15px;"
+			columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
+
+			<p:outputLabel value="Descrição" for="descricao" />
+			<p:inputText id="descricao" size="30" maxlength="150" required="true"
+				requiredMessage="A descrição é obrigatória!"
+				value="#{cadastroInstanciaBean.instancia.descricao}" />
+
+			<p:outputLabel value="Endereço" for="endereco" />
+			<p:inputText id="endereco" size="30" maxlength="150" required="true"
+				value="#{cadastroInstanciaBean.instancia.endereco}" />
+
+			<p:outputLabel value="Telefone" for="telefone" />
+			<p:inputMask id="telefone" mask="(99) 9999-9999"
+				value="#{cadastroInstanciaBean.instancia.telefone}" />
+		</p:panelGrid>
+	</div>
+</ui:composition>

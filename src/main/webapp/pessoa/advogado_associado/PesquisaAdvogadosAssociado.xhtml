@@ -1,0 +1,75 @@
+<ui:composition template="/WEB-INF/templates/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<ui:define name="titulo">Pesquisa | Advogados Associados </ui:define>
+
+	<ui:define name="conteudo">
+		<h1 class="adv-titulo-pagina">Advogados Associados Cadastrados</h1>
+
+		<h:form id="form">
+			<p:messages id="messages" autoUpdate="true" closable="true" />
+
+			<p:toolbar>
+				<p:toolbarGroup>
+					<p:commandButton value="Novo Cadastro" id="botaoNovo"
+						action="/pessoa/advogado_associado/CadastroAdvogadoAssociado.xhtml" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:dataTable id="advogadosAssTable" var="pessoa"
+				value="#{pesquisaAdvogadoAssociadoBean.pessoas}"
+				emptyMessage="Nenhum Advogado Associado ou Advogada Associada encontrado." rows="20"
+				paginator="true" paginatorAlwaysVisible="false"
+				paginatorPosition="bottom" style="margin-top: 15px" reflow="true">
+
+				<p:column headerText="Situação">
+					<h:outputText value="#{pessoa.situacao}" />
+				</p:column>
+
+				<p:column headerText="Nome" priority="3">
+					<h:outputText value="#{pessoa.nome}" />
+				</p:column>
+
+				<p:column headerText="OAB" priority="5">
+					<h:outputText value="#{pessoa.oab}" />
+				</p:column>
+
+				<p:column headerText="Celular" priority="6">
+					<h:outputText value="#{pessoa.celular}" />
+				</p:column>
+
+				<p:column styleClass="col-custom">
+					<p:button outcome="CadastroAdvogadoAssociado" icon="ui-icon-pencil"
+						title="Editar" style="height: 22px">
+						<f:param name="pessoa" value="#{pessoa.codigo}" />
+					</p:button>
+					<p:commandButton update=":form:confirmExclusao"
+						oncomplete="PF('confirmacaoDialog').show()" icon="ui-icon-trash"
+						title="Excluir" style="height: 22px">
+						<f:setPropertyActionListener value="#{pessoa}"
+							target="#{pesquisaAdvogadoAssociadoBean.pessoaSelecionada}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog id="confirmExclusao" responsive="true"
+				header="Exclusão de Advogado(a)"
+				message="Tem certeza que deseja excluir o Advogado(a) Associado(a) #{pesquisaAdvogadoAssociadoBean.pessoaSelecionada.nome}?"
+				showEffect="fade" hideEffect="fade" severity="alert"
+				widgetVar="confirmacaoDialog">
+				<h:form id="formExcluir">
+					<p:commandButton value="Sim"
+						action="#{pesquisaAdvogadoAssociadoBean.excluir}" immediate="true"
+						oncomplete="PF('confirmacaoDialog').hide()" process="@this"
+						update=":form:advogadosAssTable" />
+					<p:commandButton value="Não"
+						onclick="PF('confirmacaoDialog').hide()" type="button" />
+				</h:form>
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+</ui:composition>

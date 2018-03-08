@@ -1,0 +1,63 @@
+<ui:composition template="/WEB-INF/templates/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<ui:define name="titulo">Pesquisa | Comarcas </ui:define>
+
+	<ui:define name="conteudo">
+		<h1 class="adv-titulo-pagina">Comarcas Cadastradas</h1>
+
+		<h:form id="form">
+			<p:messages id="messages" autoUpdate="true" closable="true" />
+
+			<p:toolbar>
+				<p:toolbarGroup>
+					<p:commandButton value="Novo Cadastro" id="botaoNovo"
+						action="/comarca/CadastroComarca.xhtml" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:dataTable id="comarcasTable" var="comarca"
+				value="#{pesquisaComarcaBean.comarcas}"
+				emptyMessage="Nenhuma Comarca encontrada." rows="20"
+				paginator="true" paginatorAlwaysVisible="false"
+				paginatorPosition="bottom" style="margin-top: 15px" reflow="true">
+
+				<p:column headerText="Descrição">
+					<h:outputText value="#{comarca.descricao}" />
+				</p:column>
+
+				<p:column styleClass="col-custom">
+					<p:button outcome="CadastroComarca" icon="ui-icon-pencil"
+						title="Editar" style="height: 22px">
+						<f:param name="comarca" value="#{comarca.codigo}" />
+					</p:button>
+					<p:commandButton update=":form:confirmExclusao"
+						oncomplete="PF('confirmacaoDialog').show()" icon="ui-icon-trash"
+						title="Excluir" style="height: 22px">
+						<f:setPropertyActionListener value="#{comarca}"
+							target="#{pesquisaComarcaBean.comarcaSelecionada}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog id="confirmExclusao" responsive="true"
+				header="Exclusão de Advogado(a)"
+				message="Tem certeza que deseja excluir a comarca #{pesquisaComarcaBean.comarcaSelecionada.descricao}?"
+				showEffect="fade" hideEffect="fade" severity="alert"
+				widgetVar="confirmacaoDialog">
+				<h:form id="formExcluir">
+					<p:commandButton value="Sim"
+						action="#{pesquisaComarcaBean.excluir}" immediate="true"
+						oncomplete="PF('confirmacaoDialog').hide()" process="@this"
+						update=":form:comarcasTable" />
+					<p:commandButton value="Não"
+						onclick="PF('confirmacaoDialog').hide()" type="button" />
+				</h:form>
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
